@@ -66,6 +66,7 @@ Browser::Bot.matchers.delete(Browser::Bot::EmptyUserAgentMatcher)
 RSpec.configure do |config|
   config.use_transactional_fixtures = true
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
+  # DatabaseCleaner.allow_remote_database_url = ENV["ALLOW_DB_CLEANER_REMOTE_URL"] == "true"
 
   config.include ApplicationHelper
   config.include ActionMailer::TestHelper

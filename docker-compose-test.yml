@@ -28,6 +28,7 @@ services:
       STATEMENT_TIMEOUT: 10000
       APP_DOMAIN: rails
       CC_TEST_REPORTER_ID: f39e060a8b1a558ebd8aff75d5b9760bf1ae98f3f85d628ae28814f3c66438cd
+      # ALLOW_DB_CLEANER_REMOTE_URL: "true"
       # Dummy values needed to verify the app boots via "rails runner"
       APP_PROTOCOL: http://
       APP_DOMAIN: localhost:3000
