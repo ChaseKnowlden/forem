@@ -1,9 +1,7 @@
 steps:
   - name: ":rspec:"
     command: "scripts/ci/parallel_specs.sh"
-    artifact_paths:
-      - "log/**/*"
-      - "tmp/screenshots/*"
+    artifact_paths: "log/**/*"
     env:
       RAILS_ENV: test
       DATABASE_URL: postgresql://forem:forem@db:5432/PracticalDeveloper_test
