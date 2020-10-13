@@ -7,6 +7,8 @@ services:
         - RAILS_ENV=test
     image: forem-test:latest
     container_name: forem_rails
+    volumes:
+      - .:/opt/apps/forem/tmp
     ports:
       - "3000:3000"
     depends_on:
@@ -28,7 +30,6 @@ services:
       STATEMENT_TIMEOUT: 10000
       APP_DOMAIN: rails
       CC_TEST_REPORTER_ID: f39e060a8b1a558ebd8aff75d5b9760bf1ae98f3f85d628ae28814f3c66438cd
-      # ALLOW_DB_CLEANER_REMOTE_URL: "true"
       # Dummy values needed to verify the app boots via "rails runner"
       APP_PROTOCOL: http://
       APP_DOMAIN: localhost:3000
@@ -49,6 +50,7 @@ services:
       KNAPSACK_PRO_FIXED_QUEUE_SPLIT: "true"
       KNAPSACK_PRO_LOG_LEVEL: info
       KNAPSACK_PRO_CI_NODE_TOTAL: 3
+      KNAPSACK_PRO_TEST_FILE_PATTERN: "{spec/system/user/*.rb, spec/services/rss_reader_spec.rb, spec/services/flare_tag_spec.rb}"
       COVERAGE_REPORTS_TOTAL: 4
     entrypoint: ["dockerize", "-wait", "tcp://db:5432", "-wait", "http://elasticsearch:9200", "-wait", "tcp://redis:6379", "-timeout", "2700s", "./scripts/entrypoint-dev.sh"]
 
